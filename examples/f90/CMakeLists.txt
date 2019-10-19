@@ -45,7 +45,7 @@ set( BufF90Sources
 	${CMAKE_SOURCE_DIR}/include/asagi.f90 )
 
 # Add MPI header files to the include path
-include_directories( SYSTEM ${MPI_Fortran_INCLUDE_PATH} )
+include_directories( ${MPI_Fortran_INCLUDE_PATH} )
 
 ##### Executables #####
 # Simple

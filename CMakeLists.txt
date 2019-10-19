@@ -154,12 +154,12 @@ else( NOMPI )
 	# Find MPI
 	find_package( MPI REQUIRED )
 	if( MPI_LIBRARY )
-		include_directories( SYSTEM ${MPI_C_INCLUDE_PATH} )
+		include_directories( ${MPI_C_INCLUDE_PATH} )
 	else()
 		#Workaround for stupid mpicc/mpicxx
 		get_filename_component( MPI_BASE ${MPI_C_COMPILER} PATH )
 		set( MPI_BASE ${MPI_BASE}/.. )
-		include_directories( SYSTEM ${MPI_BASE}/include )
+		include_directories( ${MPI_BASE}/include )
 		link_directories( ${MPI_BASE}/lib )
 	endif()
 	set( CMAKE_C_COMPILER ${MPI_C_COMPILER} )
@@ -181,7 +181,7 @@ if( NONUMA )
 else( NONUMA )
     find_package( Threads REQUIRED )
     find_package( Numa REQUIRED )
-    include_directories( SYSTEM ${NUMA_INCLUDE_DIR} )
+    include_directories( ${NUMA_INCLUDE_DIR} )
 endif( NONUMA )
 if( THREADS_FOUND )
     add_definitions( -DUSE_PTHREAD )
@@ -204,7 +204,7 @@ endif( DEBUG_NUMA )
 
 # Find netcdf
 find_package( NetCDF REQUIRED )
-include_directories( SYSTEM ${NETCDF_INCLUDES} )
+include_directories( ${NETCDF_INCLUDES} )
 
 # Add library include files for all exectuables
 include_directories( ${CMAKE_SOURCE_DIR}/include )
